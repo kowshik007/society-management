@@ -22,10 +22,6 @@ public class GatedCommunity {
     @UpdateTimestamp
     private OffsetDateTime updatedTimestamp;
 
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryid")
-    private Category category;
-
     public GatedCommunity() {
     }
 
@@ -63,14 +59,6 @@ public class GatedCommunity {
 
     public void setUpdatedTimestamp(OffsetDateTime updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     @Override

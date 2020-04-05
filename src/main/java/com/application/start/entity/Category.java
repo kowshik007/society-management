@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -15,6 +17,14 @@ public class Category {
     private int id;
     @Column(name = "name")
     private String name;
+    @OneToMany(targetEntity = Apartment.class,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryid")
+    private Set apartmentList=new HashSet();
+
+    @OneToMany(targetEntity = GatedCommunity.class,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryid")
+    private Set gatedCommunityList=new HashSet();
+
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -27,6 +37,22 @@ public class Category {
     }
 
     public Category() {
+    }
+
+    public Set getApartmentList() {
+        return apartmentList;
+    }
+
+    public void setApartmentList(Set apartmentList) {
+        this.apartmentList = apartmentList;
+    }
+
+    public Set getGatedCommunityList() {
+        return gatedCommunityList;
+    }
+
+    public void setGatedCommunityList(Set gatedCommunityList) {
+        this.gatedCommunityList = gatedCommunityList;
     }
 
     public int getId() {

@@ -9,20 +9,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "apartment")
-public class Apartment {
+@Table(name = "gated_community")
+public class GatedCommunityVilla {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
-//    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-//            targetEntity = Floor.class,
-//            mappedBy = "apartment",
-//            fetch = FetchType.LAZY
-//    )
-//    private Set floorList=new HashSet();
+    @OneToMany(targetEntity = Villa.class,
+            cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
+            fetch = FetchType.EAGER
+            )
+    @JoinColumn(name = "gatedCommunityId")
+    private Set villaList=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -30,10 +30,10 @@ public class Apartment {
     @UpdateTimestamp
     private OffsetDateTime updatedTimestamp;
 
-    public Apartment() {
+    public GatedCommunityVilla() {
     }
 
-    public Apartment(String name) {
+    public GatedCommunityVilla(String name) {
         this.name = name;
     }
 
@@ -53,13 +53,13 @@ public class Apartment {
         this.name = name;
     }
 
-//    public Set getFloorList() {
-//        return floorList;
-//    }
-//
-//    public void setFloorList(Set floorList) {
-//        this.floorList = floorList;
-//    }
+    public Set getVillaList() {
+        return villaList;
+    }
+
+    public void setVillaList(Set villaList) {
+        this.villaList = villaList;
+    }
 
     public OffsetDateTime getCreatedTimestamp() {
         return createdTimestamp;
@@ -77,10 +77,9 @@ public class Apartment {
         this.updatedTimestamp = updatedTimestamp;
     }
 
-
     @Override
     public String toString() {
-        return "Apartment{" +
+        return "GatedCommunity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", createdTimestamp=" + createdTimestamp +

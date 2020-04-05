@@ -19,8 +19,8 @@ public class Villa {
     private String villaName;
     @Column(name = "villadescription")
     private String villaDescription;
-    @OneToMany(mappedBy = "villa",cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = VillaDelivery.class)
-    private Set villaDelivery=new HashSet();
+//    @OneToMany(mappedBy = "villa",cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = VillaDelivery.class)
+//    private Set villaDelivery=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -28,9 +28,9 @@ public class Villa {
     @UpdateTimestamp
     private OffsetDateTime updatedTimestamp;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = GatedCommunity.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "gatedcommunityid")
-    private GatedCommunity gatedCommunity;
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = GatedCommunity.class,fetch = FetchType.EAGER)
+//    @JoinColumn(name = "gatedcommunityid")
+//    private GatedCommunity gatedCommunity;
 
     public Villa() {
     }
@@ -80,13 +80,13 @@ public class Villa {
         this.updatedTimestamp = updatedTimestamp;
     }
 
-    public GatedCommunity getGatedCommunity() {
-        return gatedCommunity;
-    }
-
-    public void setGatedCommunity(GatedCommunity gatedCommunity) {
-        this.gatedCommunity = gatedCommunity;
-    }
+//    public GatedCommunity getGatedCommunity() {
+//        return gatedCommunity;
+//    }
+//
+//    public void setGatedCommunity(GatedCommunity gatedCommunity) {
+//        this.gatedCommunity = gatedCommunity;
+//    }
 
     @Override
     public String toString() {

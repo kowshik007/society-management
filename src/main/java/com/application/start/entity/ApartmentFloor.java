@@ -10,19 +10,19 @@ import java.util.Set;
 
 @Entity
 @Table(name = "apartment")
-public class Apartment {
+public class ApartmentFloor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
-//    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-//            targetEntity = Floor.class,
-//            mappedBy = "apartment",
-//            fetch = FetchType.LAZY
-//    )
-//    private Set floorList=new HashSet();
+    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
+            targetEntity = Floor.class,
+            mappedBy = "apartment",
+            fetch = FetchType.LAZY
+    )
+    private Set floorSet=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -30,10 +30,10 @@ public class Apartment {
     @UpdateTimestamp
     private OffsetDateTime updatedTimestamp;
 
-    public Apartment() {
+    public ApartmentFloor() {
     }
 
-    public Apartment(String name) {
+    public ApartmentFloor(String name) {
         this.name = name;
     }
 
@@ -53,13 +53,13 @@ public class Apartment {
         this.name = name;
     }
 
-//    public Set getFloorList() {
-//        return floorList;
-//    }
-//
-//    public void setFloorList(Set floorList) {
-//        this.floorList = floorList;
-//    }
+    public Set getFloorSet() {
+        return floorSet;
+    }
+
+    public void setFloorSet(Set floorSet) {
+        this.floorSet = floorSet;
+    }
 
     public OffsetDateTime getCreatedTimestamp() {
         return createdTimestamp;
