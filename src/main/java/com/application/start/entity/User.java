@@ -40,8 +40,8 @@ public class User {
     )
     private Set roleList=new HashSet();
 
-    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY,targetEntity = UserSecurity.class)
-    private Set userSecurityList=new HashSet();
+//    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY,targetEntity = UserSecurity.class)
+//    private Set userSecurityList=new HashSet();
 
     public User() {
     }
@@ -124,13 +124,13 @@ public class User {
         }
         roleList.add(role);
     }
-
-    public void addUserSecurity(UserSecurity userSecurity){
-        if(userSecurityList==null){
-            userSecurityList=new HashSet();
-        }
-        userSecurityList.add(userSecurity);
-    }
+//
+//    public void addUserSecurity(UserSecurity userSecurity){
+//        if(userSecurityList==null){
+//            userSecurityList=new HashSet();
+//        }
+//        userSecurityList.add(userSecurity);
+//    }
 
 
 
@@ -142,13 +142,13 @@ public class User {
         this.roleList = roleList;
     }
 
-    public Set getUserSecurityList() {
-        return userSecurityList;
-    }
-
-    public void setUserSecurityList(Set userSecurityList) {
-        this.userSecurityList = userSecurityList;
-    }
+//    public Set getUserSecurityList() {
+//        return userSecurityList;
+//    }
+//
+//    public void setUserSecurityList(Set userSecurityList) {
+//        this.userSecurityList = userSecurityList;
+//    }
 
 
     @Override

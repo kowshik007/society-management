@@ -25,9 +25,9 @@ public class UserDAO implements UserDAOInterface {
         // create a query
         Query<User> theQuery =
                 currentSession.createQuery("from User", User.class);
-        for(User user:theQuery.getResultList()){
-            Hibernate.initialize(user.getUserSecurityList());
-        }
+//        for(User user:theQuery.getResultList()){
+//            Hibernate.initialize(user.getUserSecurityList());
+//        }
         // execute query and get result list
         return theQuery.getResultList();
     }
@@ -43,7 +43,7 @@ public class UserDAO implements UserDAOInterface {
     public User getUser(int id) {
         Session session=sessionFactory.getCurrentSession();
         User user=session.get(User.class,id);
-        Hibernate.initialize(user.getUserSecurityList());
+//        Hibernate.initialize(user.getUserSecurityList());
         return user;
     }
 

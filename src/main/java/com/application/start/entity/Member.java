@@ -1,5 +1,6 @@
 package com.application.start.entity;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,10 +18,10 @@ public class Member {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Home.class)
-    @JoinColumn(name = "homeid")
-    private Home home;
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = User.class)
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Home.class)
+//    @JoinColumn(name = "homeid")
+//    private Home home;
+    @OneToOne(cascade = CascadeType.ALL,targetEntity = User.class)
     @JoinColumn(name = "userid")
     private User user;
     @Column(name = "createdtimestamp")
@@ -62,13 +63,13 @@ public class Member {
         this.lastName = lastName;
     }
 
-    public Home getHome() {
-        return home;
-    }
-
-    public void setHome(Home home) {
-        this.home = home;
-    }
+//    public Home getHome() {
+//        return home;
+//    }
+//
+//    public void setHome(Home home) {
+//        this.home = home;
+//    }
 
     public User getUser() {
         return user;

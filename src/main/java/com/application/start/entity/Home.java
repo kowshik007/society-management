@@ -18,8 +18,16 @@ public class Home {
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Floor.class)
     @JoinColumn(name = "floorid")
     private Floor floor;
-    @OneToMany(mappedBy = "home",cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Delivery.class)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Delivery.class)
+    @JoinColumn(name = "homeid")
     private Set homeDelivery=new HashSet();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            targetEntity = Member.class
+    )
+    @JoinColumn(name = "homeid")
+    private Set members=new HashSet();
     @Column(name = "flatnumber")
     private int flatNumber;
     @Column(name = "createdtimestamp")
@@ -42,6 +50,14 @@ public class Home {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set members) {
+        this.members = members;
     }
 
     public Floor getFloor() {

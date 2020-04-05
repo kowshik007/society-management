@@ -19,7 +19,7 @@ public class CategoryDAO implements CategoryDAOInterface {
     private SessionFactory sessionFactory;
     @Override
     public Set getList(String name) {
-        if(name=="apartment") {
+        if(name.contains("apartment")) {
             Session session = sessionFactory.getCurrentSession();
             Category category = session.createQuery("from Category where name=:name", Category.class)
                     .setParameter("name", name)
@@ -27,7 +27,7 @@ public class CategoryDAO implements CategoryDAOInterface {
             Hibernate.initialize(category.getApartmentList());
             Set<Apartment> apartmentSet = category.getApartmentList();
             return apartmentSet;
-        }else if(name=="villa"){
+        }else if(name.contains("villa")){
             Session session = sessionFactory.getCurrentSession();
             Category category = session.createQuery("from Category where name=:name", Category.class)
                     .setParameter("name", name)

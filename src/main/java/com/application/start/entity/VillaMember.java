@@ -17,9 +17,6 @@ public class VillaMember{
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Villa.class)
-    @JoinColumn(name = "villaid")
-    private Villa villa;
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = User.class)
     @JoinColumn(name = "userid")
     private User user;
@@ -60,6 +57,14 @@ public class VillaMember{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public OffsetDateTime getCreatedTimestamp() {

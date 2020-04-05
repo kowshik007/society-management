@@ -26,9 +26,9 @@ public class Delivery {
     private OffsetDateTime approvedAt;
     @Column(name = "timelimit")
     private int timeLimit;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Home.class)
-    @JoinColumn(name = "homeid")
-    private Home home;
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Home.class)
+//    @JoinColumn(name = "homeid")
+//    private Home home;
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -103,13 +103,13 @@ public class Delivery {
         this.timeLimit = timeLimit;
     }
 
-    public Home getHome() {
-        return home;
-    }
-
-    public void setHome(Home home) {
-        this.home = home;
-    }
+//    public Home getHome() {
+//        return home;
+//    }
+//
+//    public void setHome(Home home) {
+//        this.home = home;
+//    }
 
     public OffsetDateTime getCreatedTimestamp() {
         return createdTimestamp;

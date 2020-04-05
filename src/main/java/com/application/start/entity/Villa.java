@@ -19,8 +19,12 @@ public class Villa {
     private String villaName;
     @Column(name = "villadescription")
     private String villaDescription;
-//    @OneToMany(mappedBy = "villa",cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = VillaDelivery.class)
-//    private Set villaDelivery=new HashSet();
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = VillaMember.class)
+    @JoinColumn(name = "villaid")
+    private Set villaMemberList=new HashSet();
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = VillaDelivery.class)
+    @JoinColumn(name = "villaid")
+    private Set villaDeliveryList=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -28,9 +32,9 @@ public class Villa {
     @UpdateTimestamp
     private OffsetDateTime updatedTimestamp;
 
-//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = GatedCommunity.class,fetch = FetchType.EAGER)
-//    @JoinColumn(name = "gatedcommunityid")
-//    private GatedCommunity gatedCommunity;
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = GatedCommunity.class,fetch = FetchType.EAGER)
+    @JoinColumn(name = "gatedcommunityid")
+    private GatedCommunity gatedCommunity;
 
     public Villa() {
     }
@@ -64,6 +68,22 @@ public class Villa {
         this.villaDescription = villaDescription;
     }
 
+    public Set getVillaMemberList() {
+        return villaMemberList;
+    }
+
+    public void setVillaMemberList(Set villaMemberList) {
+        this.villaMemberList = villaMemberList;
+    }
+
+    public Set getVillaDeliveryList() {
+        return villaDeliveryList;
+    }
+
+    public void setVillaDeliveryList(Set villaDeliveryList) {
+        this.villaDeliveryList = villaDeliveryList;
+    }
+
     public OffsetDateTime getCreatedTimestamp() {
         return createdTimestamp;
     }
@@ -80,13 +100,13 @@ public class Villa {
         this.updatedTimestamp = updatedTimestamp;
     }
 
-//    public GatedCommunity getGatedCommunity() {
-//        return gatedCommunity;
-//    }
-//
-//    public void setGatedCommunity(GatedCommunity gatedCommunity) {
-//        this.gatedCommunity = gatedCommunity;
-//    }
+    public GatedCommunity getGatedCommunity() {
+        return gatedCommunity;
+    }
+
+    public void setGatedCommunity(GatedCommunity gatedCommunity) {
+        this.gatedCommunity = gatedCommunity;
+    }
 
     @Override
     public String toString() {
