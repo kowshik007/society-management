@@ -1,5 +1,6 @@
 package com.application.start.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,6 +18,7 @@ public class UserSecurity {
     @Column(name = "question")
     private String question;
     @Column(name = "answer")
+    @JsonIgnore
     private String answer;
     @Column(name = "createdTimestamp")
     @CreationTimestamp
@@ -55,6 +57,14 @@ public class UserSecurity {
 
     public String getAnswer() {
         return answer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setAnswer(String answer) {

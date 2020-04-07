@@ -15,9 +15,9 @@ public class Home {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Floor.class)
-    @JoinColumn(name = "floorid")
-    private Floor floor;
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Floor.class)
+//    @JoinColumn(name = "floorid")
+//    private Floor floor;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Delivery.class)
     @JoinColumn(name = "homeid")
     private Set homeDelivery=new HashSet();
@@ -60,13 +60,13 @@ public class Home {
         this.members = members;
     }
 
-    public Floor getFloor() {
-        return floor;
-    }
-
-    public void setFloor(Floor floor) {
-        this.floor = floor;
-    }
+//    public Floor getFloor() {
+//        return floor;
+//    }
+//
+//    public void setFloor(Floor floor) {
+//        this.floor = floor;
+//    }
 
     public int getFlatNumber() {
         return flatNumber;

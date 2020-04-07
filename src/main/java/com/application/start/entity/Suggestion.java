@@ -18,9 +18,9 @@ public class Suggestion {
     @Column(name = "suggestion")
     private String suggestion;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Article.class)
-    @JoinColumn(name = "articleid")
-    private Article article;
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Article.class)
+//    @JoinColumn(name = "articleid")
+//    private Article article;
 
 
     @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = PollResult.class)
@@ -49,12 +49,20 @@ public class Suggestion {
         this.id = id;
     }
 
-    public Article getArticle() {
-        return article;
+//    public Article getArticle() {
+//        return article;
+//    }
+//
+//    public void setArticle(Article article) {
+//        this.article = article;
+//    }
+
+    public Set getPollResultList() {
+        return pollResultList;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public void setPollResultList(Set pollResultList) {
+        this.pollResultList = pollResultList;
     }
 
     public String getSuggestion() {

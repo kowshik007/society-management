@@ -23,10 +23,11 @@ public class Floor {
     private String lastName;
     @Column(name = "contactnumber")
     private String contactNumber;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Apartment.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "apartmentid")
-    private Apartment apartment;
-    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Home.class,mappedBy = "floor")
+//    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Apartment.class,fetch = FetchType.EAGER)
+//    @JoinColumn(name = "apartmentid")
+//    private Apartment apartment;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,targetEntity = Home.class)
+    @JoinColumn(name = "floorid")
     private Set flatList=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
@@ -53,13 +54,13 @@ public class Floor {
         this.id = id;
     }
 
-    public Apartment getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
-    }
+//    public Apartment getApartment() {
+//        return apartment;
+//    }
+//
+//    public void setApartment(Apartment apartment) {
+//        this.apartment = apartment;
+//    }
 
     public Set getFlatList() {
         return flatList;

@@ -19,7 +19,8 @@ public class Article {
     private String name;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Suggestion.class,mappedBy = "article")
+    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER,targetEntity = Suggestion.class)
+    @JoinColumn(name = "articleid")
     private Set suggestionList=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
@@ -58,6 +59,14 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set getSuggestionList() {
+        return suggestionList;
+    }
+
+    public void setSuggestionList(Set suggestionList) {
+        this.suggestionList = suggestionList;
     }
 
     public OffsetDateTime getCreatedTimestamp() {

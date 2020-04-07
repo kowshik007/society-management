@@ -46,14 +46,13 @@ public class ArticleDAO implements ArticleDAOInterface{
     public String deleteArticle(int id) {
         Session session=sessionFactory.getCurrentSession();
         session.delete(session.get(Article.class,id));
-        return "The record deleted successfully";
+        return "Successfully deleted the record";
     }
 
     @Override
     public Set getAllSocietyArticle(int id) {
         Session session=sessionFactory.getCurrentSession();
         Society society=session.get(Society.class,id);
-        System.out.println("Society details"+society.toString());
         Hibernate.initialize(society.getArticleList());
         return society.getArticleList();
     }

@@ -17,12 +17,12 @@ public class Apartment {
     private int id;
     @Column(name = "name")
     private String name;
-//    @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-//            targetEntity = Floor.class,
-//            mappedBy = "apartment",
-//            fetch = FetchType.LAZY
-//    )
-//    private Set floorList=new HashSet();
+    @OneToMany(cascade = CascadeType.ALL,
+            targetEntity = Floor.class,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "apartmentid")
+    private Set floorList=new HashSet();
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -53,13 +53,20 @@ public class Apartment {
         this.name = name;
     }
 
-//    public Set getFloorList() {
-//        return floorList;
-//    }
-//
-//    public void setFloorList(Set floorList) {
-//        this.floorList = floorList;
-//    }
+    public Set getFloorList() {
+        return floorList;
+    }
+
+    public void setFloorList(Set floorList) {
+        this.floorList = floorList;
+    }
+
+    public void addFloor(Floor floor){
+        if(floorList==null){
+            floorList=new HashSet();
+        }
+        floorList.add(floor);
+    }
 
     public OffsetDateTime getCreatedTimestamp() {
         return createdTimestamp;

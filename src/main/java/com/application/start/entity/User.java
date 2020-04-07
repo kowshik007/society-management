@@ -1,5 +1,6 @@
 package com.application.start.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -18,6 +19,7 @@ public class User {
     @Column(name = "email")
     private String email;
     @Column(name = "password")
+    @JsonIgnore
     private String password;
     @Column(name = "status")
     private short status;
