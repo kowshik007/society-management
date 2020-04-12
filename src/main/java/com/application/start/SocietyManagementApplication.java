@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 public class SocietyManagementApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(SocietyManagementApplication.class, args);
 	}
