@@ -1,6 +1,7 @@
 package com.application.start;
 
 import com.application.start.dao.UserDAO;
+import com.application.start.entity.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

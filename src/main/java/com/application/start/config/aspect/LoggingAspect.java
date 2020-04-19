@@ -34,14 +34,14 @@ public class LoggingAspect {
     }
     @Pointcut(value = "execution(* com.application.start.dao.UserDAO.getUser(..))")
     public void getUserPointCut(){}
-    @AfterReturning(pointcut = "getUserPointCut()",returning = "idUser")
-    public void getUserAfterReturning(JoinPoint joinPoint, IdUser idUser){
-        System.out.println("After returning access: "+ idUser.toString());
-    }
-    @AfterThrowing(pointcut = "getUserPointCut()",throwing = "theExep")
-    public void getUserAfterThrowing(JoinPoint joinPoint,Throwable theExep){
-        System.out.println("The exception is: "+theExep);
-    }
+//    @AfterReturning(pointcut = "getUserPointCut()",returning = "idUser")
+//    public void getUserAfterReturning(JoinPoint joinPoint, IdUser idUser){
+//        System.out.println("After returning access: "+ idUser.toString());
+//    }
+//    @AfterThrowing(pointcut = "getUserPointCut()",throwing = "theExep")
+//    public void getUserAfterThrowing(JoinPoint joinPoint,Throwable theExep){
+//        System.out.println("The exception is: "+theExep);
+//    }
 
     @Around("getUserPointCut()")
     public Object aroundAdvicePractice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{

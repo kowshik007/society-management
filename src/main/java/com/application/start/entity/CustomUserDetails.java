@@ -1,4 +1,4 @@
-package com.application.start;
+package com.application.start.entity;
 
 import com.application.start.entity.IdUser;
 import com.application.start.entity.Role;
