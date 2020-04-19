@@ -1,6 +1,6 @@
 package com.application.start.config.aspect;
 
-import com.application.start.entity.User;
+import com.application.start.entity.IdUser;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -34,9 +34,9 @@ public class LoggingAspect {
     }
     @Pointcut(value = "execution(* com.application.start.dao.UserDAO.getUser(..))")
     public void getUserPointCut(){}
-    @AfterReturning(pointcut = "getUserPointCut()",returning = "user")
-    public void getUserAfterReturning(JoinPoint joinPoint, User user){
-        System.out.println("After returning access: "+user.toString());
+    @AfterReturning(pointcut = "getUserPointCut()",returning = "idUser")
+    public void getUserAfterReturning(JoinPoint joinPoint, IdUser idUser){
+        System.out.println("After returning access: "+ idUser.toString());
     }
     @AfterThrowing(pointcut = "getUserPointCut()",throwing = "theExep")
     public void getUserAfterThrowing(JoinPoint joinPoint,Throwable theExep){

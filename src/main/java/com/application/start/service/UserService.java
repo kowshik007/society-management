@@ -1,7 +1,7 @@
 package com.application.start.service;
 
 import com.application.start.dao.UserDAOInterface;
-import com.application.start.entity.User;
+import com.application.start.entity.IdUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,38 +15,38 @@ public class UserService implements UserServiceInterface{
     private UserDAOInterface userDAOInterface;
     @Override
     @Transactional
-    public List<User> getUserList() {
+    public List<IdUser> getUserList() {
         return userDAOInterface.getUserList();
     }
 
     @Override
     @Transactional
-    public User saveUser(User user) {
-        return userDAOInterface.saveUser(user);
+    public IdUser saveUser(IdUser idUser) {
+        return userDAOInterface.saveUser(idUser);
     }
 
     @Override
     @Transactional
-    public User getUser(int id) {
+    public IdUser getUser(int id) {
         return userDAOInterface.getUser(id);
     }
 
     @Override
     @Transactional
-    public User updateUser(int id,User user) {
-        return userDAOInterface.updateUser(id,user);
+    public IdUser updateUser(int id, IdUser idUser) {
+        return userDAOInterface.updateUser(id, idUser);
     }
 
     @Override
     @Transactional
-    public User updateUserStatus(int id, short status, User user) {
-        return userDAOInterface.updateUserStatus(id,status,user);
+    public IdUser updateUserStatus(int id, short status, IdUser idUser) {
+        return userDAOInterface.updateUserStatus(id,status, idUser);
     }
 
     @Override
     @Transactional
-    public User updateUserActive(int id, boolean active, User user) {
-        return userDAOInterface.updateUserActive(id,active,user);
+    public IdUser updateUserActive(int id, boolean active, IdUser idUser) {
+        return userDAOInterface.updateUserActive(id,active, idUser);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class UserService implements UserServiceInterface{
 
     @Override
     @Transactional
-    public void deleteUser(User user) {
-        userDAOInterface.deleteUser(user);
+    public void deleteUser(IdUser idUser) {
+        userDAOInterface.deleteUser(idUser);
     }
 }

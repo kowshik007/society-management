@@ -6,7 +6,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "user_security")
@@ -29,7 +28,7 @@ public class UserSecurity {
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "userid")
-    private User user;
+    private IdUser idUser;
 
     public UserSecurity() {
     }
@@ -59,12 +58,12 @@ public class UserSecurity {
         return answer;
     }
 
-    public User getUser() {
-        return user;
+    public IdUser getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(IdUser idUser) {
+        this.idUser = idUser;
     }
 
     public void setAnswer(String answer) {

@@ -1,6 +1,5 @@
 package com.application.start.entity;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,9 +20,9 @@ public class Member {
 //    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},targetEntity = Home.class)
 //    @JoinColumn(name = "homeid")
 //    private Home home;
-    @OneToOne(cascade = CascadeType.ALL,targetEntity = User.class)
+    @OneToOne(cascade = CascadeType.ALL,targetEntity = IdUser.class)
     @JoinColumn(name = "userid")
-    private User user;
+    private IdUser idUser;
     @Column(name = "createdtimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -71,12 +70,12 @@ public class Member {
 //        this.home = home;
 //    }
 
-    public User getUser() {
-        return user;
+    public IdUser getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(IdUser idUser) {
+        this.idUser = idUser;
     }
 
     public OffsetDateTime getCreatedTimestamp() {

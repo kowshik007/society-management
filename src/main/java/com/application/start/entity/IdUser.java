@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "id_user")
-public class User {
+public class IdUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -45,10 +45,10 @@ public class User {
 //    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY,targetEntity = UserSecurity.class)
 //    private Set userSecurityList=new HashSet();
 
-    public User() {
+    public IdUser() {
     }
 
-    public User(String email, String password, short status, boolean active, String phone) {
+    public IdUser(String email, String password, short status, boolean active, String phone) {
         this.email = email;
         this.password = password;
         this.status = status;

@@ -1,6 +1,6 @@
 package com.application.start.restcontroller;
 
-import com.application.start.entity.User;
+import com.application.start.entity.IdUser;
 import com.application.start.entity.UserRole;
 import com.application.start.entity.UserSociety;
 import com.application.start.service.UserRoleServiceInterface;
@@ -21,21 +21,21 @@ public class UserRestController {
     @Autowired
     private UserSocietyInterface userSocietyInterface;
     @GetMapping(path = "/users")
-    public List<User> getUserList(){
+    public List<IdUser> getUserList(){
         return userServiceInterface.getUserList();
     }
     @GetMapping(path = "/users/{id}")
-    public User getUser(@PathVariable("id") int id){
+    public IdUser getUser(@PathVariable("id") int id){
         return userServiceInterface.getUser(id);
     }
     @PostMapping(path = "/users")
-    public User saveUser(@RequestBody User user){
-        return  userServiceInterface.saveUser(user);
+    public IdUser saveUser(@RequestBody IdUser idUser){
+        return  userServiceInterface.saveUser(idUser);
     }
     @PutMapping(path = "/users/{id}")
-    public User updateUser(@PathVariable int id,@RequestBody User user){
-        System.out.println("User details in controller:"+user);
-        return userServiceInterface.updateUser(id,user);
+    public IdUser updateUser(@PathVariable int id, @RequestBody IdUser idUser){
+        System.out.println("User details in controller:"+ idUser);
+        return userServiceInterface.updateUser(id, idUser);
     }
     @GetMapping(path = "/user_role/{userid}/{roleid}")
     public UserRole mapUserRole(@PathVariable("userid") int userid, @PathVariable("roleid") int roleid){
