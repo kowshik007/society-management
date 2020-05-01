@@ -6,4 +6,5 @@ import java.util.Set;
 
 public interface TblClientServiceInterface {
     public Set<TblClient> getClientList();
+    public TblClient findByClientUserId(String clientUserId);
 }

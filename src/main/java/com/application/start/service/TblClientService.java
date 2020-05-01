@@ -17,4 +17,9 @@ public class TblClientService implements TblClientServiceInterface {
     public Set<TblClient> getClientList() {
         return tblClientDAOInterface.getClientList();
     }
+
+    @Override
+    public TblClient findByClientUserId(String clientUserId) {
+        return tblClientDAOInterface.findByClientUserId(clientUserId);
+    }
 }

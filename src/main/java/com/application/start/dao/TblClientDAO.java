@@ -29,4 +29,13 @@ public class TblClientDAO implements TblClientDAOInterface {
         }
         return tblClientSet;
     }
+
+    @Override
+    public TblClient findByClientUserId(String clientUserId) {
+        Session session=sessionFactory.getCurrentSession();
+        TblClient tblClient=session.createQuery("from TblClient where clientUserId=:clientUserId",TblClient.class).setParameter("clientUserId",clientUserId).getSingleResult();
+        Hibernate.initialize(tblClient.getTblAuthoritySet());
+        Hibernate.initialize(tblClient.getTblScopeSet());
+        return tblClient;
+    }
 }
