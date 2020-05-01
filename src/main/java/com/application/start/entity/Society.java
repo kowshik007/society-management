@@ -19,6 +19,10 @@ public class Society {
     private String name;
     @Column(name = "status")
     private short status;
+    @Column(name = "pincode")
+    private int pincode;
+    @Column(name = "officename")
+    private String officeName;
     @Column(name = "createdTimestamp")
     @CreationTimestamp
     private OffsetDateTime createdTimestamp;
@@ -45,9 +49,11 @@ public class Society {
     public Society() {
     }
 
-    public Society(String name, short status) {
+    public Society(String name, short status, int pincode, String officeName) {
         this.name = name;
         this.status = status;
+        this.pincode = pincode;
+        this.officeName = officeName;
     }
 
     public int getId() {
@@ -72,6 +78,22 @@ public class Society {
 
     public void setStatus(short status) {
         this.status = status;
+    }
+
+    public int getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(int pincode) {
+        this.pincode = pincode;
+    }
+
+    public String getOfficeName() {
+        return officeName;
+    }
+
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
     }
 
     public OffsetDateTime getCreatedTimestamp() {
@@ -104,12 +126,12 @@ public class Society {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", status=" + status +
+                ", pincode=" + pincode +
+                ", officeName='" + officeName + '\'' +
                 ", createdTimestamp=" + createdTimestamp +
                 ", updatedTimestamp=" + updatedTimestamp +
                 '}';
     }
-
-
 
     public void addSocietyArticle(Article article){
         if(articleList==null){

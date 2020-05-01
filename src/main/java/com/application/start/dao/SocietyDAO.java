@@ -38,6 +38,10 @@ public class SocietyDAO implements SocietyDAOInterface {
         Society tempSociety=session.get(Society.class,id);
         if(society.getName()!=null){
             tempSociety.setName(society.getName());
+        }else if(society.getPincode()!=0){
+            tempSociety.setPincode(society.getPincode());
+        }else if(society.getOfficeName()!=null){
+            tempSociety.setOfficeName(society.getOfficeName());
         }
         return tempSociety;
     }
