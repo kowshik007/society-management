@@ -41,6 +41,7 @@ public class UserRestController {
     }
     @PostMapping(path = "/users")
     public IdUser saveUser(@RequestBody IdUser idUser){
+        System.out.println(idUser.toString());
         return  userServiceInterface.saveUser(idUser);
     }
     @PutMapping(path = "/users/{id}")

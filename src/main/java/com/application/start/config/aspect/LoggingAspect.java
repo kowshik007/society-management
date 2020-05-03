@@ -1,6 +1,5 @@
 package com.application.start.config.aspect;
 
-import com.application.start.entity.IdUser;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -21,16 +20,15 @@ public class LoggingAspect {
     @Before(value = "pointCutForDAO()")
     public void anyMethodExecution(JoinPoint joinPoint){
         MethodSignature methodSignature= (MethodSignature) joinPoint.getSignature();
-        System.out.println(methodSignature);
-        System.out.println("====> Execution started for a DAO method");
+        appLogs.info("Executing method: "+methodSignature);
         Object[] objects=joinPoint.getArgs();
         for (Object object:objects){
-            System.out.println(object);
+            appLogs.info("Method Args: "+object);
         }
     }
     @After(value = "pointCutForDAO()")
     public void afterDAOMethod(){
-        System.out.println("====> Execution completed for DAO method");
+        appLogs.info("completed executing the method");
     }
     @Pointcut(value = "execution(* com.application.start.dao.UserDAO.getUser(..))")
     public void getUserPointCut(){}
@@ -52,7 +50,7 @@ public class LoggingAspect {
             long end=System.currentTimeMillis();
             appLogs.info("Total execution time: "+(end-start)+" milliseconds");
         }catch (Exception exp){
-            System.out.println(exp);
+            appLogs.info("Exception Occured:"+exp);
             throw exp;
         }
         return result;

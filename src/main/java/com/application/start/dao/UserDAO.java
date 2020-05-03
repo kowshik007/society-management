@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Transactional
@@ -24,7 +23,7 @@ public class UserDAO implements UserDAOInterface {
 
         // create a query
         Query<IdUser> theQuery =
-                currentSession.createQuery("from User", IdUser.class);
+                currentSession.createQuery("from IdUser", IdUser.class);
 //        for(User user:theQuery.getResultList()){
 //            Hibernate.initialize(user.getUserSecurityList());
 //        }

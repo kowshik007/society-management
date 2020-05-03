@@ -3,12 +3,13 @@ package com.application.start.restcontroller;
 import com.application.start.entity.Society;
 import com.application.start.service.SocietyInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class SocietyController {
     @Autowired
     private SocietyInterface societyInterface;

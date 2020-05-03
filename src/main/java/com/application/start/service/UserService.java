@@ -3,6 +3,7 @@ package com.application.start.service;
 import com.application.start.dao.UserDAOInterface;
 import com.application.start.entity.IdUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,9 @@ import java.util.List;
 
 @Service
 public class UserService implements UserServiceInterface{
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private UserDAOInterface userDAOInterface;
@@ -22,6 +26,7 @@ public class UserService implements UserServiceInterface{
     @Override
     @Transactional
     public IdUser saveUser(IdUser idUser) {
+        idUser.setPassword(passwordEncoder.encode(idUser.getPassword()));
         return userDAOInterface.saveUser(idUser);
     }
 

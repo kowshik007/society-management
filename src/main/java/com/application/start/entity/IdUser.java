@@ -1,6 +1,7 @@
 package com.application.start.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,7 +20,6 @@ public class IdUser {
     @Column(name = "email")
     private String email;
     @Column(name = "password")
-    @JsonIgnore
     private String password;
     @Column(name = "status")
     private short status;
@@ -42,8 +42,6 @@ public class IdUser {
     )
     private Set roleList=new HashSet();
 
-//    @OneToMany(mappedBy = "user",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.LAZY,targetEntity = UserSecurity.class)
-//    private Set userSecurityList=new HashSet();
 
     public IdUser() {
     }
@@ -71,11 +69,9 @@ public class IdUser {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
+    @JsonIgnore
+    public String getPassword() { return password; }
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -126,14 +122,6 @@ public class IdUser {
         }
         roleList.add(role);
     }
-//
-//    public void addUserSecurity(UserSecurity userSecurity){
-//        if(userSecurityList==null){
-//            userSecurityList=new HashSet();
-//        }
-//        userSecurityList.add(userSecurity);
-//    }
-
 
 
     public Set getRoleList() {
@@ -143,15 +131,6 @@ public class IdUser {
     public void setRoleList(Set roleList) {
         this.roleList = roleList;
     }
-
-//    public Set getUserSecurityList() {
-//        return userSecurityList;
-//    }
-//
-//    public void setUserSecurityList(Set userSecurityList) {
-//        this.userSecurityList = userSecurityList;
-//    }
-
 
     @Override
     public String toString() {

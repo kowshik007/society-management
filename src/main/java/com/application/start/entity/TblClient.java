@@ -3,8 +3,6 @@ package com.application.start.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -17,9 +15,6 @@ public class TblClient {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Autowired
-    @Transient
-    private BCryptPasswordEncoder passwordEncoder;
     @Column(name = "clientuserid")
     private String clientUserId;
     @Column(name = "password")
@@ -78,7 +73,7 @@ public class TblClient {
     }
 
     public void setPassword(String password) {
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
     }
 
     public String getPassword() {
